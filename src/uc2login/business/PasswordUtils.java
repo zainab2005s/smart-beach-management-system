@@ -69,9 +69,14 @@ public class PasswordUtils {
         }
     }
 
-    /**
-     * Derives a secure password hash using PBKDF2.
-     */
+   /**
+ * Derives a secure password hash using PBKDF2.
+ *
+ * @param password the original password
+ * @param salt the random salt used for hashing
+ * @return the generated password hash
+ * @throws Exception if the hashing process fails
+ */
     private static byte[] generateHash(String password, byte[] salt)
             throws Exception {
 
