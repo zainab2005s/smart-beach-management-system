@@ -1,7 +1,6 @@
 package com.smartbeach.data;
-/**
- * يمثل هذا الكلاس بيانات الشاطئ مع محاكاة التحديث التلقائي للحالة بناء على الحساسات (IoT Simulation)
- */
+// يمثل هذا الكلاس بيانات الشاطئ مع محاكاة التحديث التلقائي للحالة بناء على الحساسات (IoT Simulation)
+ 
 public class Beach {
     private String name;
     private String location;
