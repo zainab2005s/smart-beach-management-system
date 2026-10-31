@@ -1,6 +1,10 @@
     
     import java.util.Scanner;
 
+import business.ReservationService;
+import data.ReservationResopsitory;
+import presentation.Reservation;
+
 /**
 
  * Presentation layer: displays the reservation menu to the visitor.
