@@ -1,1 +1,0 @@
-# smart-beach-management-system
