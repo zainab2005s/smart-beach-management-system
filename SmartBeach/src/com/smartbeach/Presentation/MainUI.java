@@ -1,10 +1,9 @@
-package com.smartbeach.ui;
+package com.smartbeach.Presentation;
 
 import com.smartbeach.business.BeachService;
 import com.smartbeach.data.Beach;
 import java.util.List;
 import java.util.Scanner;
-
 
  //طبقة العرض (Presentation Layer)
 public class MainUI {
