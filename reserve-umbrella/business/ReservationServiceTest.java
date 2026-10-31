@@ -15,6 +15,9 @@ public class ReservationServiceTest {
        repository = new ReservationResopsitory();
        service = new ReservationService(repository);
    }
+   /**
+    * to test valid reservation request 
+    */
    @Test
    public void testValidateRequestValid() {
        String error = service.validateRequest(
@@ -24,6 +27,9 @@ public class ReservationServiceTest {
        );
        assertNull(error);
    }
+   /**
+    * to test the validation with empty visitor name
+    */
    @Test
    public void testValidateRequestBlankName() {
        String error = service.validateRequest(
@@ -33,6 +39,9 @@ public class ReservationServiceTest {
        );
        assertEquals("Visitor name is required.", error);
    }
+   /**
+    * to test validation with past date
+    */
    @Test
    public void testValidateRequestPastDate() {
        String error = service.validateRequest(
@@ -45,6 +54,9 @@ public class ReservationServiceTest {
                error
        );
    }
+   /**
+    * to test validation with invalid date format
+    */
    @Test
    public void testValidateRequestInvalidDateFormat() {
        String error = service.validateRequest(
@@ -57,6 +69,9 @@ public class ReservationServiceTest {
                error
        );
    }
+   /**
+    * test facility prices
+    */
    @Test
    public void testGetPrice() {
        assertEquals(
@@ -76,6 +91,9 @@ public class ReservationServiceTest {
                service.getPrice("Unknown Facility")
        );
    }
+   /**
+    * test creating areservation successfully
+    */
    @Test
    public void testCreateReservation() {
        Reservation res = service.createReservation(
@@ -89,6 +107,9 @@ public class ReservationServiceTest {
        assertEquals(2.0, res.getPrice());
        assertFalse(res.isConfirmed());
    }
+   /**
+    * test successful reservation confiramtion
+    */
    @Test
    public void testConfirmReservationSuccess() {
        Reservation res = service.createReservation(
@@ -108,6 +129,9 @@ public class ReservationServiceTest {
                )
        );
    }
+   /**
+    * test reservation confirmation when the payment fails
+    */
    @Test
    public void testConfirmReservationFailedPayment() {
        Reservation res = service.createReservation(

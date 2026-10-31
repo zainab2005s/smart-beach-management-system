@@ -9,6 +9,9 @@ public class ReservationResopsitoryTest {
    public void setUp() {
        repository = new ReservationResopsitory();
    }
+   /**
+    * test that the initial inventory count is correct
+    */
    @Test
    public void testInitialInventoryCount() {
        int count = repository.getAvailableCount(
@@ -17,6 +20,9 @@ public class ReservationResopsitoryTest {
        );
        assertEquals(5, count);
    }
+   /**
+    * test that a resevation reduces the available count
+    */
    @Test
    public void testReserveSuccessfully() {
        boolean success = repository.reserve(
@@ -32,6 +38,9 @@ public class ReservationResopsitoryTest {
                )
        );
    }
+   /**
+    * test reserving facilities untill inventory become empty
+    */
    @Test
    public void testReserveUntilDepleted() {
        String beach = "Al Jazayer Beach";
@@ -45,6 +54,9 @@ public class ReservationResopsitoryTest {
                repository.getAvailableCount(beach, facility)
        );
    }
+   /**
+    * test the availability retrieval for invalid beach and facility 
+    */
    @Test
    public void testGetAvailableCountForInvalidKey() {
        int count = repository.getAvailableCount(

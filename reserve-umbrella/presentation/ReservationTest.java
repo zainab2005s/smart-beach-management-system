@@ -5,7 +5,9 @@ package presentation;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ReservationTest {
-    
+    /**
+     * this test do test reservation creation and getter methods
+     */
 
    @Test
    public void testReservationCreationAndGetters() {
@@ -23,6 +25,10 @@ public class ReservationTest {
        assertEquals(5.0, reservation.getPrice());
        assertFalse(reservation.isConfirmed());
    }
+
+   /**
+    * this test updating the confirmation status
+    */
    @Test
    public void testSetConfirmed() {
        Reservation reservation = new Reservation(
@@ -36,6 +42,10 @@ public class ReservationTest {
        reservation.setConfirmed(true);
        assertTrue(reservation.isConfirmed());
    }
+   /**
+    * this test reservation test output
+    */
+
    @Test
    public void testToStringFormatting() {
        Reservation reservation = new Reservation(
