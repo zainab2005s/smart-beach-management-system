@@ -1,0 +1,39 @@
+
+name: Java Regression Tests
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Download JUnit
+        run: |
+          mkdir -p lib
+          curl -fL -o lib/junit.jar https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-console-standalone/1.14.4/junit-platform-console-standalone-1.14.4.jar
+
+      - name: Compile Java code and tests
+        run: |
+          mkdir -p out
+          find src -name "*.java" > sources.txt
+          javac -encoding UTF-8 -d out @sources.txt
+          find test -name "*.java" > tests.txt
+          javac -encoding UTF-8 -cp "out:lib/junit.jar" -d out @tests.txt
+      - name: Run JUnit tests
+        run: |
+          java -jar lib/junit.jar execute --class-path out --scan-class-path
+      - name: Run JUnit tests
+        run: |
+          java -jar lib/junit.jar execute --class-path out --scan-class-path --fail-if-no-tests
